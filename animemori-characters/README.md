@@ -1,6 +1,6 @@
-# Animemori Characters (AniList) v0.1.1
+# Animemori Characters v0.1.1
 
-This plugin adds automatic character importing using AniList.
+This plugin adds automatic character importing using a public API endpoint.
 
 ## Requirements
 - Animemori Core active (database tables come from the core plugin).

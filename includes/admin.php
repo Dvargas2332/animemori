@@ -184,9 +184,9 @@ function animemori_admin_page_import() {
 
   <div class="wrap">
 
-    <h1>Animemori - Import Anime (Free API)</h1>
+    <h1>Animemori - Import Anime</h1>
 
-    <p>Imports anime data from a free public API (Jikan for MAL). It stores the raw payload JSON for future use.</p>
+    <p>Imports anime data from a public API. It stores the raw payload JSON for future use.</p>
 
 
 
@@ -214,7 +214,7 @@ function animemori_admin_page_import() {
 
         <tr>
 
-          <th scope="row"><label for="source_id">MAL ID</label></th>
+          <th scope="row"><label for="source_id">Source ID</label></th>
 
           <td><input name="source_id" id="source_id" type="number" min="1" required /></td>
 

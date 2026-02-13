@@ -23,7 +23,7 @@ function animemori_chars_get_settings() {
 function animemori_chars_anilist_request($query, $variables = [], $settings = null) {
   $settings = $settings ?: animemori_chars_get_settings();
   $endpoint = trim($settings['endpoint'] ?? '');
-  if (!$endpoint) return new WP_Error('missing_endpoint', 'AniList endpoint missing');
+  if (!$endpoint) return new WP_Error('missing_endpoint', 'Characters API endpoint missing');
 
   $headers = ['Content-Type' => 'application/json', 'Accept' => 'application/json'];
   if (!empty($settings['auth_token'])) {
@@ -41,17 +41,16 @@ function animemori_chars_anilist_request($query, $variables = [], $settings = nu
   $code = wp_remote_retrieve_response_code($resp);
   $raw = wp_remote_retrieve_body($resp);
   if ($code !== 200) {
-    return new WP_Error('anilist_http', 'AniList request failed', ['status' => $code, 'body' => $raw]);
+    return new WP_Error('chars_http', 'Characters API request failed', ['status' => $code, 'body' => $raw]);
   }
 
   $json = json_decode($raw, true);
   if (!is_array($json)) {
-    return new WP_Error('anilist_parse', 'Invalid JSON from AniList', ['body' => $raw]);
+    return new WP_Error('chars_parse', 'Invalid JSON from characters API', ['body' => $raw]);
   }
   if (!empty($json['errors'])) {
-    return new WP_Error('anilist_error', 'AniList returned errors', ['errors' => $json['errors']]);
+    return new WP_Error('chars_error', 'Characters API returned errors', ['errors' => $json['errors']]);
   }
 
   return $json['data'] ?? null;
 }
-

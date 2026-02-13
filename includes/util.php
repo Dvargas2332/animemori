@@ -48,7 +48,7 @@ function animemori_map_format_from_jikan($type) {
 
 function animemori_map_status_from_jikan($status) {
   $s = strtolower(trim((string)$status));
-  // Jikan status examples: "Currently Airing", "Finished Airing", "Not yet aired"
+  // Status examples: "Currently Airing", "Finished Airing", "Not yet aired"
   if (str_contains($s, 'currently')) return 'AIRING';
   if (str_contains($s, 'finished')) return 'FINISHED';
   if (str_contains($s, 'not yet')) return 'UPCOMING';
@@ -56,7 +56,7 @@ function animemori_map_status_from_jikan($status) {
 }
 
 function animemori_guess_precision($dateStr) {
-  // Jikan provides ISO datetime; precision usually DAY
+  // API provides ISO datetime; precision usually DAY
   if (!$dateStr) return null;
   return 'DAY';
 }

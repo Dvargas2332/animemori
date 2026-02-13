@@ -21,15 +21,6 @@ function animemori_theme_assets() {
 }
 add_action('wp_enqueue_scripts', 'animemori_theme_assets');
 
-function animemori_adsense_auto_ads_script() {
-  if (is_admin()) return;
-  ?>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3489151897456419"
-       crossorigin="anonymous"></script>
-  <?php
-}
-add_action('wp_head', 'animemori_adsense_auto_ads_script', 20);
-
 function animemori_capture_search_term() {
   if (is_admin()) return;
   $term = '';

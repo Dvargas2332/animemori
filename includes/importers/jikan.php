@@ -8,7 +8,7 @@ function animemori_jikan_fetch_anime_full($mal_id) {
 
  $mal_id = intval($mal_id);
 
- if ($mal_id <= 0) return new WP_Error('bad_id', 'Invalid MAL ID');
+ if ($mal_id <= 0) return new WP_Error('bad_id', 'Invalid source ID');
 
 
 
@@ -38,7 +38,7 @@ function animemori_jikan_fetch_anime_full($mal_id) {
 
  if ($code !== 200) {
 
- return new WP_Error('jikan_http', 'Jikan request failed', ['status' => $code, 'body' => $body]);
+ return new WP_Error('anime_http', 'Anime API request failed', ['status' => $code, 'body' => $body]);
 
  }
 
@@ -48,7 +48,7 @@ function animemori_jikan_fetch_anime_full($mal_id) {
 
  if (!is_array($json) || !isset($json['data'])) {
 
- return new WP_Error('jikan_parse', 'Invalid JSON from Jikan', ['body' => $body]);
+ return new WP_Error('anime_parse', 'Invalid JSON from anime API', ['body' => $body]);
 
  }
 
@@ -98,7 +98,7 @@ function animemori_jikan_request($path, $params = []) {
 
  if ($code !== 200) {
 
- return new WP_Error('jikan_http', 'Jikan request failed', ['status' => $code, 'body' => $body]);
+ return new WP_Error('anime_http', 'Anime API request failed', ['status' => $code, 'body' => $body]);
 
  }
 
@@ -108,7 +108,7 @@ function animemori_jikan_request($path, $params = []) {
 
  if (!is_array($json) || !isset($json['data'])) {
 
- return new WP_Error('jikan_parse', 'Invalid JSON from Jikan', ['body' => $body]);
+ return new WP_Error('anime_parse', 'Invalid JSON from anime API', ['body' => $body]);
 
  }
 
@@ -146,7 +146,7 @@ function animemori_jikan_fetch_list($path, $params = [], $max_pages = 1, $sleep_
 
  if (!is_array($data)) {
 
- return new WP_Error('jikan_parse', 'Invalid list data from Jikan');
+ return new WP_Error('anime_parse', 'Invalid list data from anime API');
 
  }
 
@@ -516,7 +516,7 @@ function animemori_import_anime_from_mal($mal_id) {
 
 
 
- // broadcast: Jikan often provides:
+ // broadcast: API often provides:
 
  // data['broadcast']['day'] e.g. "Sundays"
 

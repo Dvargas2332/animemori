@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Animemori Characters (AniList)
- * Description: Automatic character importer for Animemori using AniList.
+ * Plugin Name: Animemori Characters
+ * Description: Automatic character importer for Animemori using a public API endpoint.
  * Version: 0.1.1
  * Author: Animemori
  * Requires at least: 6.0

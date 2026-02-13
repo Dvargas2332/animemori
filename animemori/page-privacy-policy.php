@@ -6,7 +6,7 @@ get_header();
   <div class="container">
     <p class="hero-meta">Policy</p>
     <h1 class="hero-title">Privacy Policy</h1>
-    <p class="hero-sub">How we collect, use, and protect data on Anime in Live.</p>
+    <p class="hero-sub">How we collect, use, and protect data on this site.</p>
   </div>
 </section>
 
@@ -24,7 +24,7 @@ get_header();
         <p>We may use cookies for site functionality and analytics. You can disable cookies in your browser settings.</p>
 
         <h2>4. Third-party services</h2>
-        <p>Anime data is provided by public APIs (e.g., Jikan). These services may have their own policies.</p>
+        <p>Some content may be provided by public APIs. These services may have their own policies.</p>
 
         <h2>5. Data removal</h2>
         <p>If you want a comment removed, contact us using the site contact information.</p>
@@ -36,4 +36,3 @@ get_header();
 </section>
 
 <?php get_footer(); ?>
-

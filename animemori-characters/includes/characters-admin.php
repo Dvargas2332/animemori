@@ -29,7 +29,7 @@ function animemori_chars_admin_page() {
   $last = get_option('animemori_chars_last_run');
   ?>
   <div class="wrap">
-    <h1>Animemori Characters (AniList)</h1>
+    <h1>Animemori Characters</h1>
 
     <?php if (!empty($_GET['am_msg'])): ?>
       <div class="notice notice-success"><p><?php echo esc_html($_GET['am_msg']); ?></p></div>
@@ -44,7 +44,7 @@ function animemori_chars_admin_page() {
       <input type="hidden" name="action" value="animemori_chars_save_settings" />
       <table class="form-table">
         <tr>
-          <th scope="row">AniList endpoint</th>
+          <th scope="row">Characters API endpoint</th>
           <td><input type="text" name="endpoint" value="<?php echo esc_attr($settings['endpoint']); ?>" class="regular-text" /></td>
         </tr>
         <tr>
@@ -85,7 +85,7 @@ function animemori_chars_admin_page() {
           <td><input type="number" name="anime_id" min="1" /></td>
         </tr>
         <tr>
-          <th scope="row">MAL ID</th>
+          <th scope="row">Source ID</th>
           <td><input type="number" name="mal_id" min="1" /></td>
         </tr>
       </table>
@@ -139,14 +139,14 @@ function animemori_chars_handle_import() {
   if ($anime_id > 0 && $mal_id <= 0) {
     $row = animemori_chars_fetch_anime_row($anime_id);
     if (!$row || empty($row['source_id'])) {
-      wp_redirect(add_query_arg(['page' => 'animemori-characters', 'am_err' => 'Anime not found or missing MAL ID'], admin_url('admin.php')));
+      wp_redirect(add_query_arg(['page' => 'animemori-characters', 'am_err' => 'Anime not found or missing Source ID'], admin_url('admin.php')));
       exit;
     }
     $mal_id = intval($row['source_id']);
   }
 
   if ($mal_id <= 0) {
-    wp_redirect(add_query_arg(['page' => 'animemori-characters', 'am_err' => 'Provide an Anime ID or MAL ID'], admin_url('admin.php')));
+    wp_redirect(add_query_arg(['page' => 'animemori-characters', 'am_err' => 'Provide an Anime ID or Source ID'], admin_url('admin.php')));
     exit;
   }
 
